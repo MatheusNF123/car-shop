@@ -10,6 +10,7 @@ export default class CarsService implements IService<ICar, Car> {
 
   async create(obj: ICar): Promise<Car> {
     const cars = await this.model.create({ ...obj });
+    console.log(obj);
     
     const car = new Car(cars);
     return car;

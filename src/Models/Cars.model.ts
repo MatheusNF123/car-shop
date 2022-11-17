@@ -6,6 +6,7 @@ const schemaCar = new Schema<ICar>({
   model: String,
   year: Number,
   color: String,
+  status: Boolean,
   buyValue: Number, 
   doorsQty: Number,
   seatsQty: Number,
