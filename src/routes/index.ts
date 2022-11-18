@@ -1,7 +1,7 @@
 import { Application } from 'express';
 
-import carsRoute from './cars.routes';
+import carRoute from './carRoutes';
 
 export default (app: Application) => {
-  app.use(carsRoute);
+  app.use(carRoute);
 };
