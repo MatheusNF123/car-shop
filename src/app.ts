@@ -9,14 +9,14 @@ class App {
   constructor() {
     this.app = express();
     this.config();
-    this.routes();
+    this.routers();
   }
 
   private config():void {
     this.app.use(express.json());
   }
 
-  private routes(): void {
+  private routers(): void {
     this.app.get('/', (req, res) => res.status(200).json({ ok: true }));
     this.router(this.app);
     this.app.use(MiddleError.errorMidleware);
@@ -30,3 +30,12 @@ class App {
 const app = new App();
 export default app.app;
 export { App };
+
+// const app = express();
+
+// app.use(express.json());
+
+// app.get('/', (req, res) => res.status(200).json({ ok: true }));
+// routes(app);
+// app.use(MiddleError.errorMidleware);
+// export default app;

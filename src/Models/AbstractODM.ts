@@ -1,15 +1,15 @@
-import { isValidObjectId, Model, models, Schema, model /* UpdateQuery */ } from 'mongoose';
+import { isValidObjectId, Model, models, Schema, model, UpdateQuery } from 'mongoose';
 import CustomError from '../Error/customError';
 import IModel from '../Interfaces/IModel';
 
 export default abstract class AbstractODM<T> implements IModel<T> {
-  _model: Model<T>;
-  _modelName: string;
-  _schema: Schema<T>;
+  protected _model: Model<T>;
+  protected _modelName: string;
+  protected _schema: Schema;
 
-  constructor(schema: Schema, name: string) {
+  constructor(schema: Schema, modelName: string) {
     this._schema = schema;
-    this._modelName = name;
+    this._modelName = modelName;
     this._model = models[this._modelName] || model(this._modelName, this._schema);
   }
 
@@ -18,7 +18,7 @@ export default abstract class AbstractODM<T> implements IModel<T> {
   }
 
   async readOne(_id:string):Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new CustomError('Invalid Mongo id', 422);
+    if (!isValidObjectId(_id)) throw new CustomError('Invalid mongo id', 422);
     return this._model.findOne({ _id });
   }
 
@@ -26,10 +26,14 @@ export default abstract class AbstractODM<T> implements IModel<T> {
     return this._model.find();
   }
 
-  // update(_id: string, obj: T): Promise<T | null> {
-  //   if (!isValidObjectId(_id)) throw new CustomError('Invalid Mongo id', 422);
-  //   return this._model.updateOne({ _id }, { ...obj } as UpdateQuery<T>, { new: true });
-  // }
+  async update(_id: string, obj: T): Promise<T | null> {
+    if (!isValidObjectId(_id)) throw new CustomError('Invalid mongo id', 422);
+    return this._model.findByIdAndUpdate(
+      { _id },
+      { ...obj } as UpdateQuery<T>,
+      { new: true },
+    );
+  }
 
   // delete(id: string): Promise<T | null> {
   //   if (!isValidObjectId(_id)) throw new CustomError('Invalid Mongo id', 422); 
