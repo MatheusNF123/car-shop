@@ -35,7 +35,8 @@ export default abstract class AbstractODM<T> implements IModel<T> {
     );
   }
 
-  // delete(id: string): Promise<T | null> {
-  //   if (!isValidObjectId(_id)) throw new CustomError('Invalid Mongo id', 422); 
-  // }
+  async delete(_id: string): Promise<T | null> {
+    if (!isValidObjectId(_id)) throw new CustomError('Invalid Mongo id', 422); 
+    return this._model.findByIdAndDelete({ _id });
+  }
 }

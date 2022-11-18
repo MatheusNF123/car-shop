@@ -15,5 +15,6 @@ router.post('/cars', carController.create);
 router.get('/cars/:id', CatchError.resolver(carController.readOne));
 router.get('/cars', carController.read);
 router.put('/cars/:id', CatchError.resolver(carController.update));
+router.delete('/cars/:id', CatchError.resolver(carController.delete));
 
 export default router;

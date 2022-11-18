@@ -32,4 +32,11 @@ export default class MotorcycleController {
 
     return res.status(200).json(carUpdated);
   };
+
+  delete: RequestHandler = async (req, res):Promise<Response> => {
+    const { id } = req.params;
+    await this.motorcycleService.delete(id);
+    
+    return res.sendStatus(204);
+  };
 }
