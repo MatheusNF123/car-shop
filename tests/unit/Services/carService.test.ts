@@ -97,10 +97,10 @@ describe('Testando a camada service', function () {
     it('Deletando um carro corretamente', async function () {
       sinon.stub(Model, 'create').resolves({ ...validCar });
       sinon.stub(Model, 'findByIdAndDelete').resolves({ ...validCar });
-      // const updatedCar = new Car(secondValidCar);
+      const updatedCar = new Car(validCar);
       const result = await service.delete(validID);
      
-      expect(result).to.be.deep.equal({ ...validCar });
+      expect(result).to.be.deep.equal(updatedCar);
     });
     it('tentando deletar um carro com id invalido', async function () {
       sinon.stub(Model, 'findByIdAndDelete').resolves({});

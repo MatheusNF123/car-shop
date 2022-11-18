@@ -17,6 +17,6 @@ router.post(`/${MOTORCYCLES}`, motorcycleController.create);
 router.get(`/${MOTORCYCLES}/:id`, CatchError.resolver(motorcycleController.readOne));
 router.get(`/${MOTORCYCLES}`, motorcycleController.read);
 router.put(`/${MOTORCYCLES}/:id`, CatchError.resolver(motorcycleController.update));
-router.delete(`/${MOTORCYCLES}:id`, CatchError.resolver(motorcycleController.delete));
+router.delete(`/${MOTORCYCLES}/:id`, CatchError.resolver(motorcycleController.delete));
 
 export default router;

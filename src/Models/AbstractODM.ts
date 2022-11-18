@@ -2,6 +2,8 @@ import { isValidObjectId, Model, models, Schema, model, UpdateQuery } from 'mong
 import CustomError from '../Error/customError';
 import IModel from '../Interfaces/IModel';
 
+const INVALID_MONG_ID = 'Invalid mongo id';
+
 export default abstract class AbstractODM<T> implements IModel<T> {
   protected _model: Model<T>;
   protected _modelName: string;
@@ -18,7 +20,7 @@ export default abstract class AbstractODM<T> implements IModel<T> {
   }
 
   async readOne(_id:string):Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new CustomError('Invalid mongo id', 422);
+    if (!isValidObjectId(_id)) throw new CustomError(INVALID_MONG_ID, 422);
     return this._model.findOne({ _id });
   }
 
@@ -27,7 +29,7 @@ export default abstract class AbstractODM<T> implements IModel<T> {
   }
 
   async update(_id: string, obj: T): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new CustomError('Invalid mongo id', 422);
+    if (!isValidObjectId(_id)) throw new CustomError(INVALID_MONG_ID, 422);
     return this._model.findByIdAndUpdate(
       { _id },
       { ...obj } as UpdateQuery<T>,
@@ -36,7 +38,7 @@ export default abstract class AbstractODM<T> implements IModel<T> {
   }
 
   async delete(_id: string): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw new CustomError('Invalid Mongo id', 422); 
+    if (!isValidObjectId(_id)) throw new CustomError(INVALID_MONG_ID, 422); 
     return this._model.findByIdAndDelete({ _id });
   }
 }

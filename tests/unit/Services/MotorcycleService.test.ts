@@ -57,22 +57,22 @@ describe('Testando a camada service', function () {
   describe('Testando a regra de buscar todos os motos', function () {
     it('Encontrando todos os motos corretamente', async function () {
       sinon.stub(Model, 'find').resolves(motorcyclesArray);
-      const listCar = motorcyclesArray.map((car) => new Motorcycle(car));
+      const listMoto = motorcyclesArray.map((car) => new Motorcycle(car));
       const result = await service.read();
 
-      expect(listCar).to.be.length(2);
-      expect(result).to.be.deep.equal(listCar);
+      expect(listMoto).to.be.length(2);
+      expect(result).to.be.deep.equal(listMoto);
     });
   });
   describe('Testando a regra de atualizar o moto', function () {
     it('Atualizando um moto corretamente', async function () {
       sinon.stub(Model, 'create').resolves({ ...validMotorcycle, id: validID });
       sinon.stub(Model, 'findByIdAndUpdate').resolves({ ...secondValidMotorcycle });
-      const updatedCar = new Motorcycle(secondValidMotorcycle);
+      const updatedMoto = new Motorcycle(secondValidMotorcycle);
       const result = await service.update(validID, secondValidMotorcycle);
       
-      expect(updatedCar).to.be.instanceOf(Motorcycle);
-      expect(result).to.be.deep.equal(updatedCar);
+      expect(updatedMoto).to.be.instanceOf(Motorcycle);
+      expect(result).to.be.deep.equal(updatedMoto);
     });
     it('tentando atualizar um moto com id invalido', async function () {
       sinon.stub(Model, 'findByIdAndUpdate').resolves({});
@@ -97,10 +97,10 @@ describe('Testando a camada service', function () {
     it('Deletando um moto corretamente', async function () {
       sinon.stub(Model, 'create').resolves({ ...validMotorcycle });
       sinon.stub(Model, 'findByIdAndDelete').resolves({ ...validMotorcycle });
-      // const updatedCar = new Car(secondValidMotorcycle);
+      const updatedMoto = new Motorcycle(validMotorcycle);
       const result = await service.delete(validID);
      
-      expect(result).to.be.deep.equal({ ...validMotorcycle });
+      expect(result).to.be.deep.equal(updatedMoto);
     });
     it('tentando deletar um moto com id invalido', async function () {
       sinon.stub(Model, 'findByIdAndDelete').resolves({});

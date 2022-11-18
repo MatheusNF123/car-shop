@@ -65,3 +65,13 @@ export const motorcyclesArray: IMotorcycle[] = [
     engineCapacity: 1000,
   },
 ];
+
+export const bodyValidMotorcycle: IMotorcycle = {
+  model: 'Uno da Escado',
+  year: 1960,
+  color: 'Red',
+  status: false,
+  buyValue: 1500,
+  category: 'Street',
+  engineCapacity: 1000,
+};

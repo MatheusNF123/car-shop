@@ -10,6 +10,7 @@ export const validCar: ICar = {
   doorsQty: 2,
   seatsQty: 2,
 };
+
 export const secondValidCar: ICar = {
   id: '6377b6483915b707f5fddc78',
   model: 'Uno',
@@ -59,8 +60,19 @@ export const carsArray: ICar[] = [
     model: 'Tempra',
     year: 1995,
     color: 'Black',
+    status: false,
     buyValue: 39.000,
     doorsQty: 2,
     seatsQty: 5,
   },
 ];
+
+export const bodyValidCar: ICar = {
+  model: 'Uno da Escado',
+  year: 1960,
+  color: 'Red',
+  status: false,
+  buyValue: 1500,
+  doorsQty: 2,
+  seatsQty: 2,
+};
