@@ -21,21 +21,8 @@ class App {
     this.router(this.app);
     this.app.use(MiddleError.errorMidleware);
   }
-
-  // public start(PORT: string | number):void {
-  //   this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
-  // }
 }
 
 const app = new App();
 export default app.app;
 export { App };
-
-// const app = express();
-
-// app.use(express.json());
-
-// app.get('/', (req, res) => res.status(200).json({ ok: true }));
-// routes(app);
-// app.use(MiddleError.errorMidleware);
-// export default app;

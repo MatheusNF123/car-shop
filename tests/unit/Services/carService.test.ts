@@ -44,7 +44,6 @@ describe('Testando a camada service', function () {
       }
     });
     it('lançando erro nenhum carro com o id passado', async function () {
-      // sinon.stub(Model, 'create').resolves(carsArray);
       sinon.stub(Model, 'findOne').resolves(null);
 
       try {
@@ -78,7 +77,7 @@ describe('Testando a camada service', function () {
       sinon.stub(Model, 'findByIdAndUpdate').resolves({});
 
       try {
-        await service.update('asdasdasdass', secondValidCar);
+        await service.update('123', secondValidCar);
       } catch (error) {
         expect((error as Error).message).to.be.equal(INVALID_MONG_ID);
       }
@@ -106,7 +105,7 @@ describe('Testando a camada service', function () {
       sinon.stub(Model, 'findByIdAndDelete').resolves({});
 
       try {
-        await service.delete('asdasdasdass');
+        await service.delete('123');
       } catch (error) {
         expect((error as Error).message).to.be.equal(INVALID_MONG_ID);
       }

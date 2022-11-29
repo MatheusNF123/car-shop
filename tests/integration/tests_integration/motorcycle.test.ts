@@ -16,7 +16,7 @@ describe('Teste das rotas /motorcycles', function () {
     sinon.restore();
   });
   describe('Testando a rota post /motorcycles', function () {
-    it(`deve retornar status 201 e as informaçoes
+    it(`deve retornar status 201 e as informações
      do moto ao cadastrar com sucesso`, async function () {
       sinon.stub(Model, 'create').resolves(validMotorcycle);
       const httpResponse = await request(app).post('/motorcycles').send(bodyValidMotorcycle);
@@ -26,7 +26,7 @@ describe('Teste das rotas /motorcycles', function () {
     });
   });
   describe('Teste da rota get /motorcycles/:id', function () {
-    it(`deve retornar status 200 e as informaçoes
+    it(`deve retornar status 200 e as informações
      do carro ao buscar um moto com sucesso`, async function () {
       sinon.stub(Model, 'findOne').resolves(validMotorcycle);
       const httpResponse = await request(app)
@@ -35,7 +35,7 @@ describe('Teste das rotas /motorcycles', function () {
       expect(httpResponse.status).to.be.deep.equal(200);
       expect(httpResponse.body).to.be.deep.equal(validMotorcycle);
     });
-    it(`deve retornar status 422 com a menssagem
+    it(`deve retornar status 422 com a mensagem
      'invalid mongo id' se for um id invalido`, async function () {
       sinon.stub(Model, 'findOne').resolves(validMotorcycle);
       const httpResponse = await request(app).get('/motorcycles/131322').send();
@@ -43,7 +43,7 @@ describe('Teste das rotas /motorcycles', function () {
       expect(httpResponse.status).to.be.deep.equal(422);
       expect(httpResponse.body).to.be.deep.equal({ message: INVALID_MONG_ID });
     });
-    it(`deve retornar status 404 com a menssagem
+    it(`deve retornar status 404 com a mensagem
      'MOTORCYCLE_NOT_FOUND' se for que não existe`, async function () {
       sinon.stub(Model, 'findOne').resolves(null);
       const httpResponse = await request(app)
@@ -54,7 +54,7 @@ describe('Teste das rotas /motorcycles', function () {
     });
   });
   describe('Teste da rota get /motorcycles', function () {
-    it(`deve retornar status 200 e a lista informaçoes
+    it(`deve retornar status 200 e a lista informações
      dos moto ao buscar motos com sucesso`, async function () {
       sinon.stub(Model, 'find').resolves(motorcyclesArray);
       const httpResponse = await request(app)
@@ -100,7 +100,7 @@ describe('Teste das rotas /motorcycles', function () {
       
         expect(httpResponse.status).to.be.deep.equal(204);
       });
-      it(`deve retornar status 422 com a menssagem
+      it(`deve retornar status 422 com a mensagem
         'invalid mongo id' se for um id invalido`, async function () {
         sinon.stub(Model, 'findByIdAndDelete').resolves(validMotorcycle);
         const httpResponse = await request(app)
@@ -109,7 +109,7 @@ describe('Teste das rotas /motorcycles', function () {
         expect(httpResponse.status).to.be.deep.equal(422);
         expect(httpResponse.body).to.be.deep.equal({ message: INVALID_MONG_ID });
       });
-      it(`deve retornar status 404 com a menssagem
+      it(`deve retornar status 404 com a mensagem
         'MOTORCYCLE_NOT_FOUND' se for que não existe`, async function () {
         sinon.stub(Model, 'findByIdAndDelete').resolves(null);
         const httpResponse = await request(app)

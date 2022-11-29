@@ -1,7 +1,12 @@
-export default interface IService<T, L> {
-  create(obj: T):Promise<L>
-  readOne(id:string):Promise<L>
-  read():Promise<L[]>
-  update(_id: string, obj: T): Promise<L>
-  delete(_id:string):Promise<L>
+import Car from '../Domains/Car';
+import Motorcycle from '../Domains/Motorcycle';
+
+export type AllVehicle = Car | Motorcycle;
+
+export default interface IService<T> {
+  create(obj: T):Promise<AllVehicle>
+  readOne(id:string):Promise<AllVehicle>
+  read():Promise<AllVehicle[]>
+  update(_id: string, obj: T): Promise<AllVehicle>
+  delete(_id:string):Promise<AllVehicle>
 }

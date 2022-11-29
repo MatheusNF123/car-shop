@@ -78,12 +78,12 @@ describe('Testando a camada service', function () {
       sinon.stub(Model, 'findByIdAndUpdate').resolves({});
 
       try {
-        await service.update('asdasdasdass', secondValidMotorcycle);
+        await service.update('123', secondValidMotorcycle);
       } catch (error) {
         expect((error as Error).message).to.be.equal(INVALID_MONG_ID);
       }
     });
-    it('tentando atualizar um moto com id errado', async function () {
+    it('tentando atualizar uma moto com id errado', async function () {
       sinon.stub(Model, 'findByIdAndUpdate').resolves(null);
 
       try {
@@ -106,7 +106,7 @@ describe('Testando a camada service', function () {
       sinon.stub(Model, 'findByIdAndDelete').resolves({});
 
       try {
-        await service.delete('asdasdasdass');
+        await service.delete('123');
       } catch (error) {
         expect((error as Error).message).to.be.equal(INVALID_MONG_ID);
       }

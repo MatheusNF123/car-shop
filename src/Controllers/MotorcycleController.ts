@@ -1,10 +1,10 @@
 import { RequestHandler, Response } from 'express';
-import Motorcycle from '../Domains/Motorcycle';
+// import Motorcycle from '../Domains/Motorcycle';
 import IMotorcycle from '../Interfaces/IMotorcycle';
 import IService from '../Interfaces/IService';
 
 export default class MotorcycleController {
-  constructor(private motorcycleService: IService<IMotorcycle, Motorcycle>) {}
+  constructor(private motorcycleService: IService<IMotorcycle>) {}
 
   create:RequestHandler = async (req, res): Promise<Response> => {
     const car = await this.motorcycleService.create(req.body);

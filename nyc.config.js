@@ -3,8 +3,9 @@ module.exports = {
   "include": [
     "src/Models",
     "src/Services",
-    "src/Controllers"
+    "src/Controllers",    
   ],
+  "exclude":["src/Models/Connection.ts"],
   "reporter": [
     "text",
     "text-summary",
