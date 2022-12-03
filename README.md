@@ -44,16 +44,19 @@ npm run dev
 ```
  POST /cars
 ```
+- O corpo da requisição deve seguir o formato abaixo:
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `model` | `string` | **Obrigatório**. |
-| `year` | `number` | **Obrigatório**. |
-| `color` | `string` | **Obrigatório**. |
-| `status` | `boolean` | **Obrigatório**. |
-| `buyValue` | `number` | **Obrigatório**. |
-| `doorsQty` | `number` | **Obrigatório**. |
-| `seatsQty` | `number` | **Obrigatório**. |
+```json
+{
+  "model": "Marea",
+  "year": 2002,
+  "color": "Black",
+  "status": true,
+  "buyValue": 15.990,
+  "doorsQty": 4,
+  "seatsQty": 5
+}
+```
 
 <details close>
   <summary>Retorno da Api</summary>
@@ -157,16 +160,18 @@ npm run dev
   PUT /cars/:id
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `model` | `string` | **Obrigatório**. |
-| `year` | `number` | **Obrigatório**. |
-| `color` | `string` | **Obrigatório**. |
-| `status` | `boolean` | **Obrigatório**. |
-| `buyValue` | `number` | **Obrigatório**. |
-| `doorsQty` | `number` | **Obrigatório**. |
-| `seatsQty` | `number` | **Obrigatório**. |
-
+- O corpo da requisição deve seguir o formato abaixo:
+```json
+{
+  "model": "Marea",
+  "year": 1992,
+  "color": "Red",
+  "status": true,
+  "buyValue": 12.000,
+  "doorsQty": 2,
+  "seatsQty": 5
+}
+```
 
 <details close>
  <summary>Retorno da Api</summary>
@@ -198,15 +203,18 @@ npm run dev
  POST /motorcycles
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `model` | `string` | **Obrigatório**. |
-| `year` | `number` | **Obrigatório**. |
-| `color` | `string` | **Obrigatório**. |
-| `status` | `boolean` | **Obrigatório**. |
-| `buyValue` | `number` | **Obrigatório**. |
-| `category` | `string` | **Obrigatório**. |
-| `engineCapacity` | `number` | **Obrigatório**. |
+- O corpo da requisição deve seguir o formato abaixo:
+```json
+{
+  "model": "Honda Cb 600f Hornet",
+  "year": 2005,
+  "color": "Yellow",
+  "status": true,
+  "buyValue": 30.000,
+  "category": "Street",
+  "engineCapacity": 600
+}
+```
 
 <details close>
 <summary>Retorno da Api</summary>
@@ -309,16 +317,19 @@ npm run dev
   PUT /motorcycles/:id
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `model` | `string` | **Obrigatório**. |
-| `year` | `number` | **Obrigatório**. |
-| `color` | `string` | **Obrigatório**. |
-| `status` | `boolean` | **Obrigatório**. |
-| `buyValue` | `number` | **Obrigatório**. |
-| `category` | `string` | **Obrigatório**. |
-| `engineCapacity` | `number` | **Obrigatório**. |
+- O corpo da requisição deve seguir o formato abaixo:
 
+```json
+{
+  "model": "Honda Cb 600f Hornet",
+  "year": 2014,
+  "color": "Red",
+  "status": true,
+  "buyValue": 45.000,
+  "category": "Street",
+  "engineCapacity": 600
+}
+```
 
 <details close>
 <summary>Retorno da Api</summary>
